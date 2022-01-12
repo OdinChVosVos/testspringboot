@@ -563,7 +563,7 @@ def vxod():
 
                 idd = login_rdl.index(login.get())
 
-                text = open(Path(Path.home(), 'testspringboot', 'testspringboot', 'src', 'Core', 'Data.txt'), 'a', encoding='utf-8')      
+                text = open(Path(Path.home(), 'IdeaProjects', 'project-final', 'testspringboot', 'src', 'Core', 'Data.txt'), 'a', encoding='utf-8')      
                 text.write(f'Пользователь {login.get()} номер {idd} \n')
                 text.close()
                 
@@ -571,7 +571,7 @@ def vxod():
                 root=Tk()
                 root.geometry('270x500')
                 root.resizable(False, False)
-                pole=PhotoImage(file=Path(Path.home(), 'testspringboot', 'testspringboot', 'src', 'Core', 'pole.png'))
+                pole=PhotoImage(file=Path(Path.home(), 'IdeaProjects', 'project-final', 'testspringboot', 'src', 'Core', 'pole.png'))
                 root.title('Angry gun')
                         
                 def vmenu():
@@ -584,7 +584,7 @@ def vxod():
                         root=Tk()
                         root.resizable(False, False)
                         root.geometry('270x500')
-                        pole=PhotoImage(file=Path(Path.home(), 'testspringboot', 'testspringboot', 'src', 'Core', 'pole.png'))
+                        pole=PhotoImage(file=Path(Path.home(), 'IdeaProjects', 'project-final', 'testspringboot', 'src', 'Core', 'pole.png'))
                         root.title('Angry gun')
 
                         pygame.init()
@@ -607,13 +607,13 @@ def vxod():
                         Exit=Button(Rama, font=('GothicRus', '20'), text='Выход из игры', bg='khaki1', command=exit, bd=5)
                         Exit.pack(pady=15, padx=10)
 
-                        smena=PhotoImage(file=Path(Path.home(), 'testspringboot', 'testspringboot', 'src', 'Core', 'smena.png'))
+                        smena=PhotoImage(file=Path(Path.home(), 'IdeaProjects', 'project-final', 'testspringboot', 'src', 'Core', 'smena.png'))
                         
                         Exit_pers=Button(root, command=vixod, image=smena, bd=0, bg='#c3e6fa')
                         Exit_pers.place(x=235, y=5)
                         
                         if rdl[idd].split(', ')[-1] == '1':
-                                redit=PhotoImage(file=Path(Path.home(), 'testspringboot', 'testspringboot', 'src', 'Core', 'redit2.png'))
+                                redit=PhotoImage(file=Path(Path.home(), 'IdeaProjects', 'project-final', 'testspringboot', 'src', 'Core', 'redit2.png'))
                                 rediting=Button(root, image=redit, command=rediting_bd, bd=0, bg='#c3e6fa')
                                 rediting.place(x=5, y=5)
                         
@@ -642,7 +642,7 @@ def vxod():
                     
                     root.geometry('1920x1080')
                     root.resizable(True, True)
-                    fon=PhotoImage(file=Path(Path.home(), 'testspringboot', 'testspringboot', 'src', 'Core', 'fon.png'))
+                    fon=PhotoImage(file=Path(Path.home(), 'IdeaProjects', 'project-final', 'testspringboot', 'src', 'Core', 'fon.png'))
                     root.config(bg='grey')
                     root.title('Angry gun')
                     root.state('zoomed')
@@ -824,11 +824,11 @@ def vxod():
                                    j=1000
                                    pomenial=0
                                    pygame.mixer.Channel(1).set_volume(1.0)
-                                   pygame.mixer.Channel(1).play(pygame.mixer.Sound(Path(Path.home(), 'testspringboot', 'testspringboot', 'src', 'Core', 'Bah.mp3')))
+                                   pygame.mixer.Channel(1).play(pygame.mixer.Sound(Path(Path.home(), 'IdeaProjects', 'project-final', 'testspringboot', 'src', 'Core', 'Bah.mp3')))
 
-                                   pygame.mixer.Channel(1).queue(pygame.mixer.Sound(Path(Path.home(), 'testspringboot', 'testspringboot', 'src', 'Core', 'victory.mp3')))
+                                   pygame.mixer.Channel(1).queue(pygame.mixer.Sound(Path(Path.home(), 'IdeaProjects', 'project-final', 'testspringboot', 'src', 'Core', 'victory.mp3')))
                                   
-                                   mibr_frames=[PhotoImage(file=Path(Path.home(), 'testspringboot', 'testspringboot', 'src', 'Core', 'mibr.gif'), format='gif -index %i' %(i)) for i in range(4)]
+                                   mibr_frames=[PhotoImage(file=Path(Path.home(), 'IdeaProjects', 'project-final', 'testspringboot', 'src', 'Core', 'mibr.gif'), format='gif -index %i' %(i)) for i in range(4)]
 
                                    ind=0
                                    def update(ind):
@@ -852,7 +852,7 @@ def vxod():
                                    l4.config(text='Очки: '+str(bal))
                                    
                                    kolpopad+=1
-                                   text= open(Path(Path.home(), 'testspringboot', 'testspringboot', 'src', 'Core', 'Data.txt'), 'a', encoding='utf-8')      
+                                   text= open(Path(Path.home(), 'IdeaProjects', 'project-final', 'testspringboot', 'src', 'Core', 'Data.txt'), 'a', encoding='utf-8')      
                                    text.write(f'\t\tПопадание номер {str(kolpopad)} с попытки {str(kolvistrel)}\n\t\t\tРасстояние до мишени {str(M)}\n\t\t\tНачальная скорость {str(v0)}\n\t\t\tНачальная высота {str(h)}\n\t\t\tУгол над горизонтом {str(alfa)}\n')
                                    text.close()
                                    kolvistrel=0
@@ -884,7 +884,7 @@ def vxod():
                 
                                         if rdl_new[idd].split(', ')[3]=='0':
 
-                                                text= open(Path(Path.home(), 'testspringboot', 'testspringboot', 'src', 'Core', 'Data.txt'), 'a', encoding='utf-8')      
+                                                text= open(Path(Path.home(), 'IdeaProjects', 'project-final', 'testspringboot', 'src', 'Core', 'Data.txt'), 'a', encoding='utf-8')      
                                                 text.write(f'\tЗадача номер 1 выполнена\n')
                                                 text.close()
 
@@ -910,7 +910,7 @@ def vxod():
                                                 
                                                 if h==70:
 
-                                                        text= open(Path(Path.home(), 'testspringboot', 'testspringboot', 'src', 'Core', 'Data.txt'), 'a', encoding='Utf-8')      
+                                                        text= open(Path(Path.home(), 'IdeaProjects', 'project-final', 'testspringboot', 'src', 'Core', 'Data.txt'), 'a', encoding='Utf-8')      
                                                         text.write(f'\tЗадача номер 2 выполнена\n')
                                                         text.close()
 
@@ -937,7 +937,7 @@ def vxod():
                                         elif rdl_new[idd].split(', ')[3]=='2':
                                                 if h==70 and v0==100:
 
-                                                        text= open(Path(Path.home(), 'testspringboot', 'testspringboot', 'src', 'Core', 'Data.txt'), 'a', encoding='Utf-8')      
+                                                        text= open(Path(Path.home(), 'IdeaProjects', 'project-final', 'testspringboot', 'src', 'Core', 'Data.txt'), 'a', encoding='Utf-8')      
                                                         text.write(f'\tЗадача номер 3 выполнена\n')
                                                         text.close()
 
@@ -963,7 +963,7 @@ def vxod():
                                         elif rdl_new[idd].split(', ')[3]=='3':
                                                 if h==70 and alfa==45:
 
-                                                        text= open(Path(Path.home(), 'testspringboot', 'testspringboot', 'src', 'Core', 'Data.txt'), 'a', encoding='Utf-8')      
+                                                        text= open(Path(Path.home(), 'IdeaProjects', 'project-final', 'testspringboot', 'src', 'Core', 'Data.txt'), 'a', encoding='Utf-8')      
                                                         text.write(f'\tЗадача номер 4 выполнена\n')
                                                         text.close()
 
@@ -989,7 +989,7 @@ def vxod():
                                                         zadacha1.config(text='ЗАДАЧА\nМишень расположена\nна расстоянии\nS='+str(M)+'м.\nРассчитать началь\nную скорость, при\nкоторой снаряд попа\nдёт в мишень,\nесли начальная\nвысота h=70 м.\nа угол alfa=45')
                                         
                                         elif rdl_new[idd].split(', ')[3]=='4':
-                                                text= open(Path(Path.home(), 'testspringboot', 'testspringboot', 'src', 'Core', 'Data.txt'), 'a', encoding='Utf-8')      
+                                                text= open(Path(Path.home(), 'IdeaProjects', 'project-final', 'testspringboot', 'src', 'Core', 'Data.txt'), 'a', encoding='Utf-8')      
                                                 text.write(f'\tВсе задачи выполнены\n')
                                                 text.close()
                                         
@@ -1001,14 +1001,14 @@ def vxod():
                                 if ym[j]>=669:
 
                                     pygame.mixer.Channel(1).set_volume(1.0)
-                                    pygame.mixer.Channel(1).play(pygame.mixer.Sound(Path(Path.home(), 'testspringboot', 'testspringboot', 'src', 'Core', 'Baz.mp3')))
+                                    pygame.mixer.Channel(1).play(pygame.mixer.Sound(Path(Path.home(), 'IdeaProjects', 'project-final', 'testspringboot', 'src', 'Core', 'Baz.mp3')))
 
                                 j+=1
                                 canvas.after(2, moving)
                                 
 
                             pygame.mixer.Channel(1).set_volume(1.0)
-                            pygame.mixer.Channel(1).play(pygame.mixer.Sound(Path(Path.home(), 'testspringboot', 'testspringboot', 'src', 'Core', 'Bam.mp3')))
+                            pygame.mixer.Channel(1).play(pygame.mixer.Sound(Path(Path.home(), 'IdeaProjects', 'project-final', 'testspringboot', 'src', 'Core', 'Bam.mp3')))
 
                             
                             moving()
@@ -1020,29 +1020,29 @@ def vxod():
                         pygame.mixer.Channel(0).set_volume(vol)
                         
                             
-                    gun45=PhotoImage(file=Path(Path.home(), 'testspringboot', 'testspringboot', 'src', 'Core', 'gun45f.png'))
-                    gun0=PhotoImage(file=Path(Path.home(), 'testspringboot', 'testspringboot', 'src', 'Core', 'gun0f.png'))
-                    gun90=PhotoImage(file=Path(Path.home(), 'testspringboot', 'testspringboot', 'src', 'Core', 'gun90f.png'))
-                    gun30=PhotoImage(file=Path(Path.home(), 'testspringboot', 'testspringboot', 'src', 'Core', 'gun30f.png'))
-                    gun60=PhotoImage(file=Path(Path.home(), 'testspringboot', 'testspringboot', 'src', 'Core', 'gun60f.png'))
+                    gun45=PhotoImage(file=Path(Path.home(), 'IdeaProjects', 'project-final', 'testspringboot', 'src', 'Core', 'gun45f.png'))
+                    gun0=PhotoImage(file=Path(Path.home(), 'IdeaProjects', 'project-final', 'testspringboot', 'src', 'Core', 'gun0f.png'))
+                    gun90=PhotoImage(file=Path(Path.home(), 'IdeaProjects', 'project-final', 'testspringboot', 'src', 'Core', 'gun90f.png'))
+                    gun30=PhotoImage(file=Path(Path.home(), 'IdeaProjects', 'project-final', 'testspringboot', 'src', 'Core', 'gun30f.png'))
+                    gun60=PhotoImage(file=Path(Path.home(), 'IdeaProjects', 'project-final', 'testspringboot', 'src', 'Core', 'gun60f.png'))
 
-                    gun45s2=PhotoImage(file=Path(Path.home(), 'testspringboot', 'testspringboot', 'src', 'Core', '45s2.png'))
-                    gun0s2=PhotoImage(file=Path(Path.home(), 'testspringboot', 'testspringboot', 'src', 'Core', '10s2.png'))
-                    gun90s2=PhotoImage(file=Path(Path.home(), 'testspringboot', 'testspringboot', 'src', 'Core', '85s2.png'))
-                    gun30s2=PhotoImage(file=Path(Path.home(), 'testspringboot', 'testspringboot', 'src', 'Core', '30s2.png'))
-                    gun60s2=PhotoImage(file=Path(Path.home(), 'testspringboot', 'testspringboot', 'src', 'Core', '60s2.png'))
+                    gun45s2=PhotoImage(file=Path(Path.home(), 'IdeaProjects', 'project-final', 'testspringboot', 'src', 'Core', '45s2.png'))
+                    gun0s2=PhotoImage(file=Path(Path.home(), 'IdeaProjects', 'project-final', 'testspringboot', 'src', 'Core', '10s2.png'))
+                    gun90s2=PhotoImage(file=Path(Path.home(), 'IdeaProjects', 'project-final', 'testspringboot', 'src', 'Core', '85s2.png'))
+                    gun30s2=PhotoImage(file=Path(Path.home(), 'IdeaProjects', 'project-final', 'testspringboot', 'src', 'Core', '30s2.png'))
+                    gun60s2=PhotoImage(file=Path(Path.home(), 'IdeaProjects', 'project-final', 'testspringboot', 'src', 'Core', '60s2.png'))
 
-                    gun45s3=PhotoImage(file=Path(Path.home(), 'testspringboot', 'testspringboot', 'src', 'Core', '45s3.png'))
-                    gun0s3=PhotoImage(file=Path(Path.home(), 'testspringboot', 'testspringboot', 'src', 'Core', '10s3.png'))
-                    gun90s3=PhotoImage(file=Path(Path.home(), 'testspringboot', 'testspringboot', 'src', 'Core', '85s3.png'))
-                    gun30s3=PhotoImage(file=Path(Path.home(), 'testspringboot', 'testspringboot', 'src', 'Core', '30s3.png'))
-                    gun60s3=PhotoImage(file=Path(Path.home(), 'testspringboot', 'testspringboot', 'src', 'Core', '60s3.png'))
+                    gun45s3=PhotoImage(file=Path(Path.home(), 'IdeaProjects', 'project-final', 'testspringboot', 'src', 'Core', '45s3.png'))
+                    gun0s3=PhotoImage(file=Path(Path.home(), 'IdeaProjects', 'project-final', 'testspringboot', 'src', 'Core', '10s3.png'))
+                    gun90s3=PhotoImage(file=Path(Path.home(), 'IdeaProjects', 'project-final', 'testspringboot', 'src', 'Core', '85s3.png'))
+                    gun30s3=PhotoImage(file=Path(Path.home(), 'IdeaProjects', 'project-final', 'testspringboot', 'src', 'Core', '30s3.png'))
+                    gun60s3=PhotoImage(file=Path(Path.home(), 'IdeaProjects', 'project-final', 'testspringboot', 'src', 'Core', '60s3.png'))
 
-                    floor=PhotoImage(file=Path(Path.home(), 'testspringboot', 'testspringboot', 'src', 'Core', 'floor.png'))
-                    Mi=PhotoImage(file=Path(Path.home(), 'testspringboot', 'testspringboot', 'src', 'Core', 'mi.png'))
-                    pod=PhotoImage(file=Path(Path.home(), 'testspringboot', 'testspringboot', 'src', 'Core', 'pod2.png'))
-                    pod3=PhotoImage(file=Path(Path.home(), 'testspringboot', 'testspringboot', 'src', 'Core', 'pod.png'))
-                    scroll=PhotoImage(file=Path(Path.home(), 'testspringboot', 'testspringboot', 'src', 'Core', 'scroll.png'))
+                    floor=PhotoImage(file=Path(Path.home(), 'IdeaProjects', 'project-final', 'testspringboot', 'src', 'Core', 'floor.png'))
+                    Mi=PhotoImage(file=Path(Path.home(), 'IdeaProjects', 'project-final', 'testspringboot', 'src', 'Core', 'mi.png'))
+                    pod=PhotoImage(file=Path(Path.home(), 'IdeaProjects', 'project-final', 'testspringboot', 'src', 'Core', 'pod2.png'))
+                    pod3=PhotoImage(file=Path(Path.home(), 'IdeaProjects', 'project-final', 'testspringboot', 'src', 'Core', 'pod.png'))
+                    scroll=PhotoImage(file=Path(Path.home(), 'IdeaProjects', 'project-final', 'testspringboot', 'src', 'Core', 'scroll.png'))
 
                     canvas2=Canvas(root, highlightthickness=0, width=270, height=280)
                     image_gun = canvas2.create_image(181, 134, image=gun45)
@@ -1116,7 +1116,7 @@ def vxod():
                     lpod=Label(image=pod, bd=0, highlightthickness=0)
 
                     pygame.mixer.Channel(0).set_volume(0.5)
-                    pygame.mixer.Channel(0).play(pygame.mixer.Sound(Path(Path.home(), 'testspringboot', 'testspringboot', 'src', 'Core', 'music.mp3')), loops=10)
+                    pygame.mixer.Channel(0).play(pygame.mixer.Sound(Path(Path.home(), 'IdeaProjects', 'project-final', 'testspringboot', 'src', 'Core', 'music.mp3')), loops=10)
 
                     scale=Scale(root, from_=0, to=100, orient='horizontal', width=20, command=on_scroll)
                     scale.place(x=960, y=743)
@@ -1137,12 +1137,12 @@ def vxod():
 
                     pygame.init()
                     
-                    torch_frames=[PhotoImage(file=Path(Path.home(), 'testspringboot', 'testspringboot', 'src', 'Core', 'torch2.gif'), format='gif -index %i' %(i)) for i in range(5)]
+                    torch_frames=[PhotoImage(file=Path(Path.home(), 'IdeaProjects', 'project-final', 'testspringboot', 'src', 'Core', 'torch2.gif'), format='gif -index %i' %(i)) for i in range(5)]
                     ramka=LabelFrame(root, bg='grey0', bd=0)
                     ramka.place(x=200, y=100)
                     
-                    troph=PhotoImage(file=Path(Path.home(), 'testspringboot', 'testspringboot', 'src', 'Core', 'troph.png'))
-                    trophopen=PhotoImage(file=Path(Path.home(), 'testspringboot', 'testspringboot', 'src', 'Core', 'trophopen2.png'))
+                    troph=PhotoImage(file=Path(Path.home(), 'IdeaProjects', 'project-final', 'testspringboot', 'src', 'Core', 'troph.png'))
+                    trophopen=PhotoImage(file=Path(Path.home(), 'IdeaProjects', 'project-final', 'testspringboot', 'src', 'Core', 'trophopen2.png'))
                     
                     ach1=Label(ramka, image=troph, bg='grey0')
                     ach1.pack(side=LEFT)
@@ -1191,10 +1191,10 @@ def vxod():
                     elif otkr==1:ach1.config(image=trophopen)
                             
                     pygame.mixer.Channel(0).set_volume(1.0)
-                    pygame.mixer.Channel(0).play(pygame.mixer.Sound(Path(Path.home(), 'testspringboot', 'testspringboot', 'src', 'Core', 'castle.mp3')), loops=10)
+                    pygame.mixer.Channel(0).play(pygame.mixer.Sound(Path(Path.home(), 'IdeaProjects', 'project-final', 'testspringboot', 'src', 'Core', 'castle.mp3')), loops=10)
 
                     pygame.mixer.Channel(1).set_volume(1.0)
-                    pygame.mixer.Channel(1).play(pygame.mixer.Sound(Path(Path.home(), 'testspringboot', 'testspringboot', 'src', 'Core', 'torch.mp3')), loops=10)
+                    pygame.mixer.Channel(1).play(pygame.mixer.Sound(Path(Path.home(), 'IdeaProjects', 'project-final', 'testspringboot', 'src', 'Core', 'torch.mp3')), loops=10)
                     
                     ind=0
                     def update(ind):
@@ -1237,14 +1237,14 @@ def vxod():
                 Exit=Button(Rama, font=('GothicRus', '20'), text='Выход из игры', bg='khaki1', command=exit, bd=5)
                 Exit.pack(pady=15, padx=10)
 
-                smena=PhotoImage(file=Path(Path.home(), 'testspringboot', 'testspringboot', 'src', 'Core', 'smena.png'))
+                smena=PhotoImage(file=Path(Path.home(), 'IdeaProjects', 'project-final', 'testspringboot', 'src', 'Core', 'smena.png'))
                 
                 Exit_pers=Button(root, command=vixod, image=smena, bd=0, bg='#c3e6fa')
                 Exit_pers.place(x=235, y=5)
 
                 if rdl[idd].split(', ')[-1] == '1':
 
-                        redit=PhotoImage(file=Path(Path.home(), 'testspringboot', 'testspringboot', 'src', 'Core', 'redit2.png'))
+                        redit=PhotoImage(file=Path(Path.home(), 'IdeaProjects', 'project-final', 'testspringboot', 'src', 'Core', 'redit2.png'))
                         rediting=Button(root, image=redit, command=rediting_bd, bd=0, bg='#c3e6fa')
                         rediting.place(x=5, y=5)
 
@@ -1266,7 +1266,7 @@ def vixod():
         root.title('Angry gun')
         root.geometry('320x300')
 
-        pole=PhotoImage(file=Path(Path.home(), 'testspringboot', 'testspringboot', 'src', 'Core', 'pole.png'))
+        pole=PhotoImage(file=Path(Path.home(), 'IdeaProjects', 'project-final', 'testspringboot', 'src', 'Core', 'pole.png'))
         lpole=Label(root, image=pole)
         lpole.place(x=-100, y=-120)
 
@@ -1297,7 +1297,7 @@ root.resizable(False, False)
 root.title('Angry gun')
 root.geometry('320x300')
 
-pole=PhotoImage(file=Path(Path.home(), 'testspringboot', 'testspringboot', 'src', 'Core', 'pole.png'))
+pole=PhotoImage(file=Path(Path.home(), 'IdeaProjects', 'project-final', 'testspringboot', 'src', 'Core', 'pole.png'))
 lpole=Label(root, image=pole)
 lpole.place(x=-100, y=-120)
 
