@@ -1,5 +1,5 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres
-    username: postgres
-    password: 1488
+    url: jdbc:postgresql://mouse.db.elephantsql.com/rlvbvwgj
+    username: rlvbvwgj
+    password: 2fn_aiDT0BEDUwIigB2HUlxFGBOxf-ww
