@@ -1,0 +1,13 @@
+#version: '3'
+#
+#services:
+#  postgres:
+#    image: 'postgres:14'
+#    container_name: 'java-postgres'
+#    ports:
+#      - 5432:5432
+#    environment:
+#      - 'POSTGRES_HOST='
+#      - 'POSTGRES_USER=rlvbvwgj'
+#      - 'POSTGRES_PASSWORD=2fn_aiDT0BEDUwIigB2HUlxFGBOxf-ww'
+#      - 'POSTGRES_DB=rlvbvwgj'

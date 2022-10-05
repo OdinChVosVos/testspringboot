@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.5.8'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
+	id 'org.flywaydb.flyway' version '8.3.0'
 }
 
 group = 'ru.ds.education'
@@ -25,6 +26,13 @@ dependencies {
 	testImplementation ('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
+}
+
+flyway{
+	url = 'jdbc:postgresql://mouse.db.elephantsql.com/rlvbvwgj'
+	user = 'rlvbvwgj'
+	password = '2fn_aiDT0BEDUwIigB2HUlxFGBOxf-ww'
+	schemas = ['public']
 }
 
 test {

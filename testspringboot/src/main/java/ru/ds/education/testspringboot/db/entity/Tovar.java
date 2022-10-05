@@ -36,4 +36,14 @@ public class Tovar {
         this.description = description;
         this.photo = photo;
     }
+
+    public Tovar(Long id, Category category, String name, double cost, double quantity_in_stock, String description, String photo) {
+        this.id = id;
+        this.category = category;
+        this.name = name;
+        this.cost = cost;
+        this.quantity_in_stock = quantity_in_stock;
+        this.description = description;
+        this.photo = photo;
+    }
 }

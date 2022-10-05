@@ -8,6 +8,8 @@ import ru.ds.education.testspringboot.db.entity.Users;
 import ru.ds.education.testspringboot.core.mapper.UsersMapper;
 import ru.ds.education.testspringboot.db.repository.UsersRepository;
 
+import java.util.List;
+
 
 @Service
 public class UsersService {
@@ -24,6 +26,10 @@ public class UsersService {
         newUser = usersRepository.save(newUser);
         user = usersMapper.map(newUser, UsersDto.class);
         return user;
+    }
+
+    public List<UsersDto> getAll(){
+        return usersMapper.mapAsList(usersRepository.findAll(), UsersDto.class);
     }
 
 }
