@@ -29,7 +29,7 @@ dependencies {
 }
 
 flyway{
-	url = 'jdbc:postgresql://mouse.db.elephantsql.com/rlvbvwgj'
+	url = 'jdbc:postgresql://localhost:5432/rlvbvwgj'
 	user = 'rlvbvwgj'
 	password = '2fn_aiDT0BEDUwIigB2HUlxFGBOxf-ww'
 	schemas = ['public']
