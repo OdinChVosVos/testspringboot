@@ -13,8 +13,17 @@ public class UsersDto {
     @ApiModelProperty("id пользователя")
     private Long id;
 
-    @ApiModelProperty("Имя пользователя")
+    @ApiModelProperty("telegram id пользователя")
+    private Long id_telegram;
+
+    @ApiModelProperty("Логин пользователя")
     private String name;
+
+    @ApiModelProperty("Имя пользователя")
+    private String firstname;
+
+    @ApiModelProperty("Фамилия пользователя")
+    private String lastname;
 
     @ApiModelProperty("Номер телефона")
     private String phone;

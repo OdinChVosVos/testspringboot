@@ -8,6 +8,7 @@ import ru.ds.education.testspringboot.db.entity.Users;
 import ru.ds.education.testspringboot.core.mapper.UsersMapper;
 import ru.ds.education.testspringboot.db.repository.UsersRepository;
 
+import java.math.BigInteger;
 import java.util.List;
 
 
@@ -30,6 +31,10 @@ public class UsersService {
 
     public List<UsersDto> getAll(){
         return usersMapper.mapAsList(usersRepository.findAll(), UsersDto.class);
+    }
+
+    public UsersDto getByTgId(Long id){
+        return usersMapper.map(usersRepository.getByTgID(id), UsersDto.class);
     }
 
 }

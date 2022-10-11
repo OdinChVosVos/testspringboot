@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.ds.education.testspringboot.core.model.UsersDto;
 import ru.ds.education.testspringboot.core.service.UsersService;
 
+import java.math.BigInteger;
 import java.util.List;
 
 
@@ -31,5 +32,13 @@ public class UsersController {
     @RequestMapping(value = "/get", method = RequestMethod.GET)
     public List<UsersDto> getAll(){
         return usersService.getAll();
+    }
+
+    @ApiOperation(
+            value = "Получение пользователя по ТГ id"
+    )
+    @RequestMapping(value = "/tg/{id}", method = RequestMethod.GET)
+    public UsersDto getByTgId(@PathVariable Long id){
+        return usersService.getByTgId(id);
     }
 }

@@ -22,7 +22,10 @@ CREATE TABLE public.category (
 
 CREATE TABLE public.users (
 	id serial NOT NULL,
+	id_telegram bigint NOT NULL UNIQUE,
 	name varchar(100) NOT NULL,
+	firstname varchar(100),
+	lastname varchar(100),
 	phone varchar(11) NULL,
 	mail varchar(100) NULL,
 	agreement boolean NOT NULL,
@@ -70,7 +73,7 @@ ALTER TABLE trash ADD CONSTRAINT trash_fk1 FOREIGN KEY (id_tovar) REFERENCES tov
 ALTER TABLE remind ADD CONSTRAINT remind_fk0 FOREIGN KEY (id_user) REFERENCES users(id);
 ALTER TABLE remind ADD CONSTRAINT remind_fk1 FOREIGN KEY (id_tovar) REFERENCES tovar(id);
 
-INSERT INTO users (id, name, agreement) VALUES (0, 'Admin', false);
+INSERT INTO users (id, id_telegram, name, agreement) VALUES (0, 0, 'Admin', false);
 
 INSERT INTO category (id, name, description) VALUES (1, 'Lego', 'Lorem Ipsum');
 INSERT INTO category (id, name, description) VALUES (2, 'Barbie', 'Lorem Ipsum');
