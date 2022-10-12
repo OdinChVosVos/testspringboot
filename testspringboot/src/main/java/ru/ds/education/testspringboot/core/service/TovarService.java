@@ -23,6 +23,7 @@ public class TovarService {
 
     public TovarDto addTovar(TovarDto tovar){
         if (tovarRepository.getAllCategories().contains(tovar.getCategory().getName())){
+            System.out.println("dwvw");
 
             Category category = tovarRepository.findCategory(tovar.getCategory().getName());
             tovarRepository.createTovar(

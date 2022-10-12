@@ -26,7 +26,7 @@ public class TovarController {
     @ApiOperation(
             value = "Добавление товаров"
     )
-    @RequestMapping(value = "", method = RequestMethod.POST)
+    @PostMapping
     public TovarDto addTovar(@RequestBody TovarDto tovar){
         return tovarService.addTovar(tovar);
     }
