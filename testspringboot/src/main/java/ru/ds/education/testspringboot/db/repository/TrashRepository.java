@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import ru.ds.education.testspringboot.db.entity.Trash;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Repository
 public interface TrashRepository extends JpaRepository<Trash, Long> {
@@ -21,5 +22,13 @@ public interface TrashRepository extends JpaRepository<Trash, Long> {
             @Param("quantity") double quantity,
             @Param("id_cart") Long id_cart
     );
+
+    @Query(value = "Select id from Tovar where id_category = :id_category order by id DESC limit 1"
+            , nativeQuery = true)
+    Long findIdAdded(@Param("id_category") Long id_category);
+
+    @Query(value = "Select * from Trash where id_cart = :id_cart"
+            , nativeQuery = true)
+    List<Trash> getByCart(@Param("id_cart") Long id_cart);
 
 }

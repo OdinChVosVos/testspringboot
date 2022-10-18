@@ -10,6 +10,9 @@ import ru.ds.education.testspringboot.db.entity.Tovar;
 import ru.ds.education.testspringboot.db.entity.Trash;
 import ru.ds.education.testspringboot.db.repository.TrashRepository;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class TrashService {
 
@@ -21,6 +24,15 @@ public class TrashService {
 
     public void addToCart(TrashDto tovar, Long cartId){
         trashRepository.add(tovar.getTovar().getId(), tovar.getQuantity(), cartId);
+    }
+
+    public ArrayList<Tovar> getByCart(Long cartId){
+        List<Trash> oneCart = trashRepository.getByCart(cartId);
+        ArrayList<Tovar> goods = new ArrayList<>();
+
+        for (Trash good:oneCart)
+            goods.add(good.getTovar());
+        return goods;
     }
 
 }
