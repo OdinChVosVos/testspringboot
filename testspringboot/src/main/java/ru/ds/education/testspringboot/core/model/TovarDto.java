@@ -4,6 +4,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.web.multipart.MultipartFile;
 
 @Getter
 @Setter
@@ -28,7 +29,7 @@ public class TovarDto {
     @ApiModelProperty("Описание товара")
     private String description;
 
-    @ApiModelProperty("Ссылка на картинку товара")
-    private String photo;
+    @ApiModelProperty("Картинка товара")
+    private byte[] photo;
 
 }

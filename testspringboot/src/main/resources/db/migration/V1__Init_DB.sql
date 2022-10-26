@@ -5,10 +5,9 @@ CREATE TABLE public.tovar (
 	cost integer NOT NULL,
 	quantity_in_stock integer NOT NULL,
 	description varchar(100) NOT NULL,
-	photo varchar(500) NOT NULL,
+	photo bigint NULL,
 	CONSTRAINT tovar_pk PRIMARY KEY (id)
 );
-
 
 
 CREATE TABLE public.category (
@@ -80,27 +79,25 @@ INSERT INTO category (id, name, description) VALUES (1, 'Lego', 'Lorem Ipsum');
 INSERT INTO category (id, name, description) VALUES (2, 'Barbie', 'Lorem Ipsum');
 INSERT INTO category (id, name, description) VALUES (3, 'Mashiny', 'Lorem Ipsum');
 
-INSERT INTO tovar (id, id_category , name, cost, quantity_in_stock, description, photo)
-VALUES (1, 1, 'Конструктор LEGO DUPLO Town Грузовой поезд', 11999, 100, 'Lorem Ipsum', 'http://');
-INSERT INTO tovar (id, id_category , name, cost, quantity_in_stock, description, photo)
-VALUES (2, 1, 'Конструктор LEGO Minecraft Шахта крипера', 8989, 100, 'Lorem Ipsum', 'http://');
-INSERT INTO tovar (id, id_category , name, cost, quantity_in_stock, description, photo)
-VALUES (3, 1, 'Конструктор LEGO Super Mario Приключения вместе с Марио', 4169, 100, 'Lorem Ipsum', 'http://');
+INSERT INTO tovar (id, id_category , name, cost, quantity_in_stock, description)
+VALUES (1, 1, 'Конструктор LEGO DUPLO Town Грузовой поезд', 11999, 100, 'Lorem Ipsum');
+INSERT INTO tovar (id, id_category , name, cost, quantity_in_stock, description)
+VALUES (2, 1, 'Конструктор LEGO Minecraft Шахта крипера', 8989, 100, 'Lorem Ipsum');
+INSERT INTO tovar (id, id_category , name, cost, quantity_in_stock, description)
+VALUES (3, 1, 'Конструктор LEGO Super Mario Приключения вместе с Марио', 4169, 100, 'Lorem Ipsum');
 
-INSERT INTO tovar (id, id_category , name, cost, quantity_in_stock, description, photo)
-VALUES (4, 2, 'Набор игровой Barbie Спа-салон', 2199, 100, 'Lorem Ipsum', 'http://');
-INSERT INTO tovar (id, id_category , name, cost, quantity_in_stock, description, photo)
-VALUES (5, 2, 'Набор игровой Barbie Йога', 2499, 100, 'Lorem Ipsum', 'http://');
-INSERT INTO tovar (id, id_category , name, cost, quantity_in_stock, description, photo)
-VALUES (6, 2, 'Набор игровой Barbie для маникюра и педикюра', 2199, 100, 'Lorem Ipsum', 'http://');
+INSERT INTO tovar (id, id_category , name, cost, quantity_in_stock, description)
+VALUES (4, 2, 'Набор игровой Barbie Спа-салон', 2199, 100, 'Lorem Ipsum');
+INSERT INTO tovar (id, id_category , name, cost, quantity_in_stock, description)
+VALUES (5, 2, 'Набор игровой Barbie Йога', 2499, 100, 'Lorem Ipsum');
+INSERT INTO tovar (id, id_category , name, cost, quantity_in_stock, description)
+VALUES (6, 2, 'Набор игровой Barbie для маникюра и педикюра', 2199, 100, 'Lorem Ipsum');
 
-INSERT INTO tovar (id, id_category , name, cost, quantity_in_stock, description, photo)
-VALUES (7, 3, 'Машина Mobicaro 1:16 пожарная инерционная', 699, 100, 'Lorem Ipsum', 'http://');
-INSERT INTO tovar (id, id_category , name, cost, quantity_in_stock, description, photo)
-VALUES (8, 3, 'Модель сборная Mobicaro Экскаватор с шуруповертом-двигателем', 889, 100, 'Lorem Ipsum', 'http://');
-INSERT INTO tovar (id, id_category , name, cost, quantity_in_stock, description, photo)
-VALUES (9, 3, 'Машина Mobicaro 1:16 Мусоровоз инерционная', 649, 100, 'Lorem Ipsum', 'http://');
-
-
+INSERT INTO tovar (id, id_category , name, cost, quantity_in_stock, description)
+VALUES (7, 3, 'Машина Mobicaro 1:16 пожарная инерционная', 699, 100, 'Lorem Ipsum');
+INSERT INTO tovar (id, id_category , name, cost, quantity_in_stock, description)
+VALUES (8, 3, 'Модель сборная Mobicaro Экскаватор с шуруповертом-двигателем', 889, 100, 'Lorem Ipsum');
+INSERT INTO tovar (id, id_category , name, cost, quantity_in_stock, description)
+VALUES (9, 3, 'Машина Mobicaro 1:16 Мусоровоз инерционная', 649, 100, 'Lorem Ipsum');
 
 

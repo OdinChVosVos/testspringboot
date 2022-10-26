@@ -18,6 +18,9 @@ public interface TovarRepository extends JpaRepository<Tovar, Long> {
     @Query(value = "Select * from Tovar where id_category = :id_category", nativeQuery = true)
     List<Tovar> findByCategory(@Param("id_category") int id_category);
 
+    @Query(value = "Select * from Tovar where id = :id", nativeQuery = true)
+    Tovar getById(@Param("id") Long id);
+
     @Query(value = "Select name from Category", nativeQuery = true)
     List<String> getAllCategories();
 

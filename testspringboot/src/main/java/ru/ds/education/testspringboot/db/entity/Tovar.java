@@ -1,5 +1,6 @@
 package ru.ds.education.testspringboot.db.entity;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,6 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 @Table(name = "Tovar")
+@Builder
 public class Tovar {
 
     @Id @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tovar_generator")
@@ -25,10 +27,13 @@ public class Tovar {
     private double cost;
     private double quantity_in_stock;
     private String description;
-    private String photo;
+
+    @Lob
+    @Column(name = "photo")
+    private byte[] photo;
 
 
-    public Tovar(Category category, String name, double cost, double quantity_in_stock, String description, String photo) {
+    public Tovar(Category category, String name, double cost, double quantity_in_stock, String description, byte[] photo) {
         this.category = category;
         this.name = name;
         this.cost = cost;
@@ -37,7 +42,7 @@ public class Tovar {
         this.photo = photo;
     }
 
-    public Tovar(Long id, Category category, String name, double cost, double quantity_in_stock, String description, String photo) {
+    public Tovar(Long id, Category category, String name, double cost, double quantity_in_stock, String description, byte[] photo) {
         this.id = id;
         this.category = category;
         this.name = name;

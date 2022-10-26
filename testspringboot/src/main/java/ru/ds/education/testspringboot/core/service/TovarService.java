@@ -5,12 +5,18 @@ import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.BeanWrapperImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+import ru.ds.education.testspringboot.api.job.ImageUtils;
+import ru.ds.education.testspringboot.core.mapper.CategoryMapper;
+import ru.ds.education.testspringboot.core.model.CategoryDto;
 import ru.ds.education.testspringboot.core.model.TovarDto;
 import ru.ds.education.testspringboot.db.entity.Category;
 import ru.ds.education.testspringboot.db.entity.Tovar;
+import ru.ds.education.testspringboot.db.repository.CategoryRepository;
 import ru.ds.education.testspringboot.db.repository.TovarRepository;
 import ru.ds.education.testspringboot.core.mapper.TovarMapper;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -23,38 +29,54 @@ public class TovarService {
     private TovarRepository tovarRepository;
 
     @Autowired
+    private CategoryRepository categoryRepository;
+
+    @Autowired
     private TovarMapper tovarMapper;
+
+    @Autowired
+    private CategoryMapper categoryMapper;
 
     @Autowired
     private RemindService remindService;
 
 
-    public TovarDto addTovar(TovarDto tovar){
-        if (tovarRepository.getAllCategories().contains(tovar.getCategory().getName())){
-            System.out.println("dwvw");
+    public TovarDto addTovar(Long category, String name, int cost, int quantity, String description, MultipartFile file) throws IOException {
+//        if (tovarRepository.getAllCategories().contains(tovar.getCategory().getName())){
+//
+//            Category category = tovarRepository.findCategory(tovar.getCategory().getName());
+//            tovarRepository.createTovar(
+//                    category.getId(), tovar.getName(),
+//                    tovar.getCost(), tovar.getQuantity_in_stock(),
+//                    tovar.getDescription(), tovar.getPhoto()
+//            );
+//
+//            Tovar newTovar = new Tovar(tovarRepository.findIdAdded(category.getId()),
+//                    category,
+//                    tovar.getName(),
+//                    tovar.getCost(), tovar.getQuantity_in_stock(),
+//                    tovar.getDescription(), tovar.getPhoto()
+//            );
+//
+//            return tovarMapper.map(newTovar, TovarDto.class);
+//        }
+//        else {
+//            Tovar newTovar = tovarMapper.map(tovar, Tovar.class);
+//            newTovar = tovarRepository.save(newTovar);
+//            tovar = tovarMapper.map(newTovar, TovarDto.class);
+//            return tovar;
+//        }
+        Tovar newTovar = tovarRepository.save(Tovar.builder()
+                .category(categoryRepository.getById(category))
+                .name(name)
+                .cost(cost)
+                .quantity_in_stock(quantity)
+                .description(description)
+                .photo(ImageUtils.compressImage(file.getBytes())).build()
+        );
 
-            Category category = tovarRepository.findCategory(tovar.getCategory().getName());
-            tovarRepository.createTovar(
-                    category.getId(), tovar.getName(),
-                    tovar.getCost(), tovar.getQuantity_in_stock(),
-                    tovar.getDescription(), tovar.getPhoto()
-            );
+        return tovarMapper.map(newTovar, TovarDto.class);
 
-            Tovar newTovar = new Tovar(tovarRepository.findIdAdded(category.getId()),
-                    category,
-                    tovar.getName(),
-                    tovar.getCost(), tovar.getQuantity_in_stock(),
-                    tovar.getDescription(), tovar.getPhoto()
-            );
-
-            return tovarMapper.map(newTovar, TovarDto.class);
-        }
-        else {
-            Tovar newTovar = tovarMapper.map(tovar, Tovar.class);
-            newTovar = tovarRepository.save(newTovar);
-            tovar = tovarMapper.map(newTovar, TovarDto.class);
-            return tovar;
-        }
     }
 
     public List<TovarDto> putGoods(List<TovarDto> goods){
@@ -69,6 +91,13 @@ public class TovarService {
         return newGoods;
 
     }
+
+    public byte[] downloadImg(Long id){
+        TovarDto tovar = getTovar(id);
+        byte[] img = ImageUtils.decompressImage(tovar.getPhoto());
+        return img;
+    }
+
 
     public List<TovarDto> getAll(){
         return tovarMapper.mapAsList(tovarRepository.findAll(), TovarDto.class);
