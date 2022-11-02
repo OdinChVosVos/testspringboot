@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import ru.ds.education.testspringboot.api.job.ImageUtils;
+import ru.ds.education.testspringboot.api.job.NullProperties;
 import ru.ds.education.testspringboot.core.mapper.CategoryMapper;
 import ru.ds.education.testspringboot.core.model.CategoryDto;
 import ru.ds.education.testspringboot.core.model.TovarDto;
@@ -42,30 +43,6 @@ public class TovarService {
 
 
     public TovarDto addTovar(Long category, String name, int cost, int quantity, String description, MultipartFile file) throws IOException {
-//        if (tovarRepository.getAllCategories().contains(tovar.getCategory().getName())){
-//
-//            Category category = tovarRepository.findCategory(tovar.getCategory().getName());
-//            tovarRepository.createTovar(
-//                    category.getId(), tovar.getName(),
-//                    tovar.getCost(), tovar.getQuantity_in_stock(),
-//                    tovar.getDescription(), tovar.getPhoto()
-//            );
-//
-//            Tovar newTovar = new Tovar(tovarRepository.findIdAdded(category.getId()),
-//                    category,
-//                    tovar.getName(),
-//                    tovar.getCost(), tovar.getQuantity_in_stock(),
-//                    tovar.getDescription(), tovar.getPhoto()
-//            );
-//
-//            return tovarMapper.map(newTovar, TovarDto.class);
-//        }
-//        else {
-//            Tovar newTovar = tovarMapper.map(tovar, Tovar.class);
-//            newTovar = tovarRepository.save(newTovar);
-//            tovar = tovarMapper.map(newTovar, TovarDto.class);
-//            return tovar;
-//        }
         Tovar newTovar = tovarRepository.save(Tovar.builder()
                 .category(categoryRepository.getById(category))
                 .name(name)
@@ -76,7 +53,6 @@ public class TovarService {
         );
 
         return tovarMapper.map(newTovar, TovarDto.class);
-
     }
 
     public List<TovarDto> putGoods(List<TovarDto> goods){
@@ -84,7 +60,7 @@ public class TovarService {
 
         for (TovarDto good:goods) {
             Tovar existingTovar = tovarRepository.getById(good.getId());
-            BeanUtils.copyProperties(good, existingTovar, getNullPropertyNames(good));
+            BeanUtils.copyProperties(good, existingTovar, NullProperties.getNullPropertyNames(good));
             newGoods.add(tovarMapper.map(tovarRepository.saveAndFlush(existingTovar), TovarDto.class));
         }
         remindService.check();
@@ -112,18 +88,7 @@ public class TovarService {
     }
 
 
-    private String[] getNullPropertyNames (Object source) {
-        final BeanWrapper src = new BeanWrapperImpl(source);
-        java.beans.PropertyDescriptor[] pds = src.getPropertyDescriptors();
-        List<String> emptyNames = new ArrayList<>();
-        emptyNames.add("id");
-        for(java.beans.PropertyDescriptor pd : pds) {
-            Object srcValue = src.getPropertyValue(pd.getName());
-            if (srcValue == null) emptyNames.add(pd.getName());
-        }
-        String[] result = new String[emptyNames.size()];
-        return emptyNames.toArray(result);
-    }
+
 
 
 }

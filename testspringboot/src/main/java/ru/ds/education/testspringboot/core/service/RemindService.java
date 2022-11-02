@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.ds.education.testspringboot.core.mapper.RemindMapper;
 import ru.ds.education.testspringboot.core.mapper.TovarMapper;
+import ru.ds.education.testspringboot.core.model.RemindDto;
 import ru.ds.education.testspringboot.core.model.TovarDto;
 import ru.ds.education.testspringboot.db.entity.Remind;
 import ru.ds.education.testspringboot.db.entity.Tovar;
@@ -34,13 +35,9 @@ public class RemindService {
         remindrepository.add(idUser, idTovar, quantity <= storage, quantity);
     }
 
-    public List<TovarDto> getAll(Long idUser){
+    public List<RemindDto> getAll(Long idUser){
         List<Remind> oneUserRemind = remindrepository.getByUser(idUser);
-        ArrayList<Tovar> goods = new ArrayList<>();
-        for (Remind good:oneUserRemind)
-            goods.add(good.getTovar());
-
-        return tovarMapper.mapAsList(goods, TovarDto.class);
+        return remindMapper.mapAsList(oneUserRemind, RemindDto.class);
     }
 
     public void check(){

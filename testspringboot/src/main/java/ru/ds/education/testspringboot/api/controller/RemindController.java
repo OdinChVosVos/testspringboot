@@ -3,6 +3,7 @@ package ru.ds.education.testspringboot.api.controller;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import ru.ds.education.testspringboot.core.model.RemindDto;
 import ru.ds.education.testspringboot.core.model.TovarDto;
 import ru.ds.education.testspringboot.core.model.TrashDto;
 import ru.ds.education.testspringboot.core.service.RemindService;
@@ -32,7 +33,7 @@ public class RemindController {
             value = "Получение всех товаров из списка желаемого"
     )
     @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
-    public List<TovarDto> getAll(@PathVariable Long id){
+    public List<RemindDto> getAll(@PathVariable Long id){
         return remindService.getAll(id);
     }
 

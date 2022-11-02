@@ -2,19 +2,24 @@ package ru.ds.education.testspringboot.core.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.ds.education.testspringboot.api.job.MyTimerTask;
 import ru.ds.education.testspringboot.core.mapper.CartsMapper;
 import ru.ds.education.testspringboot.core.mapper.TovarMapper;
+import ru.ds.education.testspringboot.core.mapper.TrashMapper;
+import ru.ds.education.testspringboot.core.model.BookedDto;
 import ru.ds.education.testspringboot.core.model.CartsDto;
 import ru.ds.education.testspringboot.core.model.TovarDto;
 import ru.ds.education.testspringboot.core.model.TrashDto;
-import ru.ds.education.testspringboot.db.entity.Carts;
-import ru.ds.education.testspringboot.db.entity.Category;
-import ru.ds.education.testspringboot.db.entity.Tovar;
-import ru.ds.education.testspringboot.db.entity.Trash;
+import ru.ds.education.testspringboot.db.entity.*;
+import ru.ds.education.testspringboot.db.repository.BookedRepository;
 import ru.ds.education.testspringboot.db.repository.CartsRepository;
+import ru.ds.education.testspringboot.db.repository.TovarRepository;
+import ru.ds.education.testspringboot.db.repository.UsersRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 @Service
@@ -24,26 +29,62 @@ public class CartsService {
     private CartsRepository cartsRepository;
 
     @Autowired
+    private UsersRepository usersRepository;
+
+    @Autowired
+    private BookedRepository bookedRepository;
+
+    @Autowired
+    private TovarRepository tovarRepository;
+
+    @Autowired
     private CartsMapper cartsMapper;
 
     @Autowired
     private TrashService trashService;
 
     @Autowired
-    private TovarMapper tovarMapper;
+    private TrashMapper trashMapper;
 
-    public List<TovarDto> getAll(Long idUser){
+    public List<TrashDto> getAll(Long tgId){
+        Long idUser = usersRepository.getByTgID(tgId).getId();
+
         if (cartsRepository.getLastId(idUser) == null)
             return null;
         Long cartId = cartsRepository.getLastId(idUser);
-        return tovarMapper.mapAsList(trashService.getByCart(cartId), TovarDto.class);
+        return trashMapper.mapAsList(trashService.getByCart(cartId), TrashDto.class);
     }
 
-    public void addToCart(Long id, TrashDto tovar){
-        if (cartsRepository.getLastId(id) == null)
-            cartsRepository.add(id);
-        Long cartId = cartsRepository.getLastId(id);
+    public void addToCart(Long tgId, TrashDto tovar){
+        Long idUser = usersRepository.getByTgID(tgId).getId();
+
+        if (cartsRepository.getLastId(idUser) == null)
+            cartsRepository.add(idUser);
+        Long cartId = cartsRepository.getLastId(idUser);
         trashService.addToCart(tovar, cartId);
+    }
+
+    public void buy(Long tgId){
+        Long idUser = usersRepository.getByTgID(tgId).getId();
+
+        List<TrashDto> cart = getAll(idUser);
+
+        //check if we can buy that much
+
+        for (TrashDto elem:cart) {
+            tovarRepository.takeFromTovar(elem.getTovar().getQuantity_in_stock()-elem.getQuantity(),
+                    elem.getTovar().getId()
+            );
+            bookedRepository.putInBooked(elem.getTovar().getId(), elem.getQuantity());
+        }
+
+        //open pay page
+
+        MyTimerTask.waiting();
+
+
+
+
     }
 
 }

@@ -7,6 +7,7 @@ import ru.ds.education.testspringboot.core.mapper.CategoryMapper;
 import ru.ds.education.testspringboot.core.model.CategoryDto;
 import ru.ds.education.testspringboot.core.model.TovarDto;
 import ru.ds.education.testspringboot.core.model.TrashDto;
+import ru.ds.education.testspringboot.core.model.UsersDto;
 import ru.ds.education.testspringboot.db.repository.CartsRepository;
 import ru.ds.education.testspringboot.db.repository.CategoryRepository;
 
@@ -23,6 +24,11 @@ public class CategoryService {
 
     @Autowired
     private CategoryService categoryService;
+
+    public CategoryDto add(CategoryDto category){
+        categoryRepository.add(category.getName(), category.getDescription());
+        return categoryMapper.map(categoryRepository.getByName(category.getName()), CategoryDto.class);
+    }
 
     public List<CategoryDto> getAll(){
         return categoryMapper.mapAsList(categoryRepository.findAll(), CategoryDto.class);

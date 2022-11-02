@@ -9,10 +9,17 @@ CREATE TABLE public.tovar (
 	CONSTRAINT tovar_pk PRIMARY KEY (id)
 );
 
+CREATE TABLE public.booked (
+	id serial NOT NULL,
+	id_tovar integer NOT NULL,
+	booked_quantity integer NOT NULL,
+	CONSTRAINT booked_pk PRIMARY KEY (id)
+);
+
 
 CREATE TABLE public.category (
 	id serial NOT NULL,
-	name varchar(100) NOT NULL,
+	name varchar(100) UNIQUE NOT NULL,
 	description varchar(100) NOT NULL,
 	CONSTRAINT category_pk PRIMARY KEY (id)
 );
@@ -64,6 +71,7 @@ CREATE SEQUENCE category_seq START 4 OWNED BY category.id;
 CREATE SEQUENCE remind_seq START 1 OWNED BY remind.id;
 CREATE SEQUENCE tovar_seq START 10 OWNED BY tovar.id;
 CREATE SEQUENCE trash_seq START 1 OWNED BY trash.id;
+CREATE SEQUENCE booked_seq START 1 OWNED BY booked.id;
 
 
 ALTER TABLE tovar ADD CONSTRAINT tovar_fk0 FOREIGN KEY (id_category) REFERENCES category(id);
@@ -72,6 +80,7 @@ ALTER TABLE trash ADD CONSTRAINT carts_fk0 FOREIGN KEY (id_cart) REFERENCES cart
 ALTER TABLE trash ADD CONSTRAINT trash_fk1 FOREIGN KEY (id_tovar) REFERENCES tovar(id);
 ALTER TABLE remind ADD CONSTRAINT remind_fk0 FOREIGN KEY (id_user) REFERENCES users(id);
 ALTER TABLE remind ADD CONSTRAINT remind_fk1 FOREIGN KEY (id_tovar) REFERENCES tovar(id);
+ALTER TABLE booked ADD CONSTRAINT booked_fk0 FOREIGN KEY (id_tovar) REFERENCES tovar(id);
 
 INSERT INTO users (id, id_telegram, name, firstname, agreement) VALUES (0, 0, 'Admin', 'Admin', false);
 

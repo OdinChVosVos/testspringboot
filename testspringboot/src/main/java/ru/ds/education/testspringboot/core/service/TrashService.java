@@ -26,13 +26,8 @@ public class TrashService {
         trashRepository.add(tovar.getTovar().getId(), tovar.getQuantity(), cartId);
     }
 
-    public ArrayList<Tovar> getByCart(Long cartId){
-        List<Trash> oneCart = trashRepository.getByCart(cartId);
-        ArrayList<Tovar> goods = new ArrayList<>();
-
-        for (Trash good:oneCart)
-            goods.add(good.getTovar());
-        return goods;
+    public List<Trash> getByCart(Long cartId){
+        return trashRepository.getByCart(cartId);
     }
 
 }

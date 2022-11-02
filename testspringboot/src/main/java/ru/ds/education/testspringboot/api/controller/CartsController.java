@@ -25,18 +25,27 @@ public class CartsController {
     @ApiOperation(
             value = "Получение всех товаров из корзины"
     )
-    @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
-    public List<TovarDto> getAll(@PathVariable Long id){
-        return cartsService.getAll(id);
+    @RequestMapping(value = "/get/{tgId}", method = RequestMethod.GET)
+    public List<TrashDto> getAll(@PathVariable Long tgId){
+        return cartsService.getAll(tgId);
     }
 
 
     @ApiOperation(
             value = "Добавление товара в корзину"
     )
-    @RequestMapping(value = "/{id}", method = RequestMethod.POST)
-    public void addToCart(@PathVariable Long id, @RequestBody TrashDto tovar){
-        cartsService.addToCart(id, tovar);
+    @RequestMapping(value = "/{tgId}", method = RequestMethod.POST)
+    public void addToCart(@PathVariable Long tgId, @RequestBody TrashDto tovar){
+        cartsService.addToCart(tgId, tovar);
+    }
+
+
+    @ApiOperation(
+            value = "Покупка"
+    )
+    @RequestMapping(value = "/buy/{tgId}", method = RequestMethod.GET)
+    public void buy(@PathVariable Long tgId){
+        cartsService.buy(tgId);
     }
 
 }

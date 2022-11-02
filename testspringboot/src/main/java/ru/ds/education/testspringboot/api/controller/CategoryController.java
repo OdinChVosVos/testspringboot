@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.ds.education.testspringboot.api.job.ParseTask;
 import ru.ds.education.testspringboot.core.model.CategoryDto;
 import ru.ds.education.testspringboot.core.model.TovarDto;
+import ru.ds.education.testspringboot.core.model.UsersDto;
 import ru.ds.education.testspringboot.core.service.CategoryService;
 import ru.ds.education.testspringboot.core.service.TovarService;
 
@@ -17,6 +18,16 @@ public class CategoryController {
 
     @Autowired
     private CategoryService categoryService;
+
+
+    @ApiOperation(
+            value = "Добавление категории"
+    )
+    @PostMapping
+    public CategoryDto add(@RequestBody CategoryDto category){
+        return categoryService.add(category);
+    }
+
 
     @ApiOperation(
             value = "Получение всех категорий"
