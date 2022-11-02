@@ -40,7 +40,7 @@ public class RemindService {
     }
 
     public List<RemindDto> getAll(Long tgId){
-        List<Remind> oneUserRemind = remindrepository.getByUser(tgId);
+        List<Remind> oneUserRemind = remindrepository.getByUser(usersRepository.getByTgID(tgId).getId());
         return remindMapper.mapAsList(oneUserRemind, RemindDto.class);
     }
 
