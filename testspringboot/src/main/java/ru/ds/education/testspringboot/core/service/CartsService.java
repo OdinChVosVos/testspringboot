@@ -1,6 +1,7 @@
 package ru.ds.education.testspringboot.core.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.TaskScheduler;
 import org.springframework.stereotype.Service;
 import ru.ds.education.testspringboot.api.job.MyTimerTask;
 import ru.ds.education.testspringboot.core.mapper.CartsMapper;
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
 
 
 @Service
@@ -57,7 +59,6 @@ public class CartsService {
 
     public void addToCart(Long tgId, TrashDto tovar){
         Long idUser = usersRepository.getByTgID(tgId).getId();
-
         if (cartsRepository.getLastId(idUser) == null)
             cartsRepository.add(idUser);
         Long cartId = cartsRepository.getLastId(idUser);
@@ -69,21 +70,12 @@ public class CartsService {
 
         List<TrashDto> cart = getAll(idUser);
 
-        //check if we can buy that much
-
         for (TrashDto elem:cart) {
             tovarRepository.takeFromTovar(elem.getTovar().getQuantity_in_stock()-elem.getQuantity(),
                     elem.getTovar().getId()
             );
             bookedRepository.putInBooked(elem.getTovar().getId(), elem.getQuantity());
         }
-
-        //open pay page
-
-        MyTimerTask.waiting();
-
-
-
 
     }
 

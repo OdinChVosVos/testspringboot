@@ -20,8 +20,8 @@ public interface RemindRepository extends JpaRepository<Remind, Long> {
     void putIsDelivered(@Param("is_delivered") boolean isDelivered,
                         @Param("id_tovar") Long idTovar);
 
-    @Query(value = "Select * from Remind where id_user = :id_user", nativeQuery = true)
-    List<Remind> getByUser(@Param("id_user") Long id_user);
+    @Query(value = "Select * from Remind where id_telegram = :id_telegram", nativeQuery = true)
+    List<Remind> getByUser(@Param("id_telegram") Long id_telegram);
 
     @Modifying
     @Transactional

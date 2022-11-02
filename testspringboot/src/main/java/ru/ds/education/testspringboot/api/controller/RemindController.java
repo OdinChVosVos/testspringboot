@@ -21,20 +21,20 @@ public class RemindController {
     @ApiOperation(
             value = "Добавление товара в список желаемого"
     )
-    @RequestMapping(value = "/{id}", method = RequestMethod.POST)
-    public void addToRemind(@PathVariable Long id,
+    @RequestMapping(value = "/{tgId}", method = RequestMethod.POST)
+    public void addToRemind(@PathVariable Long tgId,
                             @RequestBody TovarDto tovar,
                             @RequestParam int quantity)
     {
-        remindService.addToRemind(id, tovar.getId(), quantity);
+        remindService.addToRemind(tgId, tovar.getId(), quantity);
     }
 
     @ApiOperation(
             value = "Получение всех товаров из списка желаемого"
     )
-    @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
-    public List<RemindDto> getAll(@PathVariable Long id){
-        return remindService.getAll(id);
+    @RequestMapping(value = "/get/{tgId}", method = RequestMethod.GET)
+    public List<RemindDto> getAll(@PathVariable Long tgId){
+        return remindService.getAll(tgId);
     }
 
 }

@@ -16,7 +16,7 @@ public interface TrashRepository extends JpaRepository<Trash, Long> {
 
     @Modifying
     @Transactional
-    @Query(value = "Insert into Trash VALUES (nextval('carts_seq'), :id_tovar, :quantity, :id_cart);", nativeQuery = true)
+    @Query(value = "Insert into Trash VALUES (nextval('trash_seq'), :id_tovar, :quantity, :id_cart);", nativeQuery = true)
     void add(
             @Param("id_tovar") Long id_tovar,
             @Param("quantity") double quantity,

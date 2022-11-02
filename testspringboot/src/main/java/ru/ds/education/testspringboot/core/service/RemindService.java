@@ -11,6 +11,7 @@ import ru.ds.education.testspringboot.db.entity.Tovar;
 import ru.ds.education.testspringboot.db.entity.Trash;
 import ru.ds.education.testspringboot.db.repository.RemindRepository;
 import ru.ds.education.testspringboot.db.repository.TovarRepository;
+import ru.ds.education.testspringboot.db.repository.UsersRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,18 +26,21 @@ public class RemindService {
     private TovarRepository tovarRepository;
 
     @Autowired
+    private UsersRepository usersRepository;
+
+    @Autowired
     private RemindMapper remindMapper;
 
     @Autowired
     private TovarMapper tovarMapper;
 
-    public void addToRemind(Long idUser, Long idTovar, int quantity){
+    public void addToRemind(Long tgId, Long idTovar, int quantity){
         double storage = tovarRepository.getById(idTovar).getQuantity_in_stock();
-        remindrepository.add(idUser, idTovar, quantity <= storage, quantity);
+        remindrepository.add(usersRepository.getByTgID(tgId).getId(), idTovar, quantity <= storage, quantity);
     }
 
-    public List<RemindDto> getAll(Long idUser){
-        List<Remind> oneUserRemind = remindrepository.getByUser(idUser);
+    public List<RemindDto> getAll(Long tgId){
+        List<Remind> oneUserRemind = remindrepository.getByUser(tgId);
         return remindMapper.mapAsList(oneUserRemind, RemindDto.class);
     }
 

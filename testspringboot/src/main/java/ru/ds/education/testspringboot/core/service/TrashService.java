@@ -23,6 +23,7 @@ public class TrashService {
     private TrashMapper trashMapper;
 
     public void addToCart(TrashDto tovar, Long cartId){
+        System.out.println("trash");
         trashRepository.add(tovar.getTovar().getId(), tovar.getQuantity(), cartId);
     }
 
