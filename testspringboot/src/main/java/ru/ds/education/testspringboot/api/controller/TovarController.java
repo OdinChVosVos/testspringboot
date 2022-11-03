@@ -13,8 +13,10 @@ import ru.ds.education.testspringboot.core.model.TovarDto;
 import ru.ds.education.testspringboot.core.model.UsersDto;
 import ru.ds.education.testspringboot.core.service.TovarService;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
 
 @RestController
@@ -51,6 +53,14 @@ public class TovarController {
         return ResponseEntity.ok().body(result);
     }
 
+    @ApiOperation(
+            value = "Изменение картинки товара"
+    )
+    @RequestMapping(value = "/update/img/{id}", method = RequestMethod.PUT)
+    public void updateImg(@PathVariable Long id, @RequestParam MultipartFile file) throws IOException {
+        tovarService.putGood(id, file);
+    }
+
 
     @ApiOperation(
             value = "Добавление товаров(парсинг)"
@@ -84,10 +94,7 @@ public class TovarController {
     )
     @RequestMapping(value = "/get/img/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> getTovarImg(@PathVariable Long id){
-        byte[] img = tovarService.downloadImg(id);
-        return ResponseEntity.status(HttpStatus.OK)
-                .contentType(MediaType.valueOf("image/png"))
-                .body(img);
+        return tovarService.downloadImg(id);
     }
 
 

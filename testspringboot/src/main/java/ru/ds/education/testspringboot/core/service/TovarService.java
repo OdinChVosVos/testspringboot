@@ -1,17 +1,16 @@
 package ru.ds.education.testspringboot.core.service;
 
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.BeanWrapper;
-import org.springframework.beans.BeanWrapperImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import ru.ds.education.testspringboot.api.job.ImageUtils;
 import ru.ds.education.testspringboot.api.job.NullProperties;
 import ru.ds.education.testspringboot.core.mapper.CategoryMapper;
-import ru.ds.education.testspringboot.core.model.CategoryDto;
 import ru.ds.education.testspringboot.core.model.TovarDto;
-import ru.ds.education.testspringboot.db.entity.Category;
 import ru.ds.education.testspringboot.db.entity.Tovar;
 import ru.ds.education.testspringboot.db.repository.CategoryRepository;
 import ru.ds.education.testspringboot.db.repository.TovarRepository;
@@ -19,9 +18,7 @@ import ru.ds.education.testspringboot.core.mapper.TovarMapper;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Service
 public class TovarService {
@@ -65,13 +62,23 @@ public class TovarService {
         }
         remindService.check();
         return newGoods;
-
     }
 
-    public byte[] downloadImg(Long id){
+    public void putGood(Long id, MultipartFile file) throws IOException{
+        Tovar existingTovar = tovarRepository.getById(id);
+        Tovar tovar = new Tovar(existingTovar.getCategory(), existingTovar.getName(),
+                existingTovar.getCost(), existingTovar.getQuantity_in_stock(),
+                existingTovar.getDescription(), ImageUtils.compressImage(file.getBytes()));
+        BeanUtils.copyProperties(tovar, existingTovar, "id");
+        tovarRepository.saveAndFlush(existingTovar);
+    }
+
+    public ResponseEntity<byte[]> downloadImg(Long id){
         TovarDto tovar = getTovar(id);
         byte[] img = ImageUtils.decompressImage(tovar.getPhoto());
-        return img;
+        return ResponseEntity.status(HttpStatus.OK)
+                .contentType(MediaType.valueOf("image/png"))
+                .body(img);
     }
 
 
