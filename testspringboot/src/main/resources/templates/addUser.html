@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/lib/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/mainStyle.css}">
+</head>
+<body>
+    <div class = "userController">
+
+        <form th:action="@{/addUser}"
+              th:object="${user}" method="POST">
+            <p><b>Имя:</b><br>
+                <input type="text" size="40" th:field="*{firstname}">
+            </p>
+            <br/>
+            <p><b>Фамилия:</b><br>
+                <input type="text" size="40" th:field="*{lastname}">
+            </p>
+            <br/>
+            <p><b>Логин:</b><br>
+                <input type="text" size="40" th:field="*{name}">
+            </p>
+            <br/>
+            <p><b>Телефон:</b><br>
+                <input type="text" size="40" th:field="*{phone}">
+            </p>
+            <br/>
+            <p><b>Почта:</b><br>
+                <input type="text" size="40" th:field="*{mail}">
+            </p>
+            <br/>
+            <p><b>Соглашение:</b><br>
+                <input type="checkbox" th:field="*{agreement}">
+            </p>
+            <br/>
+            <p><b>Телеграм id:</b><br>
+                <input type="text" size="40" th:field="*{id_telegram}">
+            </p>
+            <br/>
+            <input type="submit" value="Create" />
+        </form>
+    </div>
+</body>
+</html>

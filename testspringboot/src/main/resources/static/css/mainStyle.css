@@ -1,0 +1,26 @@
+body{
+    background:#e2e2e2;
+    padding: 2%;
+}
+.container{
+    text-align: center;
+    background: #fff;
+    margin: 0 auto;
+    padding: 2%;
+}
+.users>button{
+    text-align: center;
+     background: #fff;
+     margin: 0 auto;
+     padding: 2%;
+}
+table {
+    text-align: center;
+    margin: 0 auto;
+    border-collapse: collapse;
+    padding: 3%;
+}
+
+table th, table td {
+    padding: 5px;
+}

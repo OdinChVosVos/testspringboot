@@ -40,6 +40,7 @@ public class Security {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
+                .antMatchers("/admin").hasRole("ADMIN")
                 .antMatchers(HttpMethod.POST, "/api/users").hasAnyRole("USER", "ADMIN")
                 .antMatchers(HttpMethod.POST, "/api/users/update").hasAnyRole("USER", "ADMIN")
                 .antMatchers("/api/users/get/**").hasRole("ADMIN")

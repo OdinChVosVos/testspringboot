@@ -13,6 +13,7 @@ import ru.ds.education.testspringboot.core.model.TovarDto;
 import ru.ds.education.testspringboot.core.model.UsersDto;
 import ru.ds.education.testspringboot.core.service.TovarService;
 
+import javax.transaction.Transactional;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -98,6 +99,7 @@ public class TovarController {
     }
 
 
+    @Transactional
     @ApiOperation(
             value = "Получение товаров в категории"
     )

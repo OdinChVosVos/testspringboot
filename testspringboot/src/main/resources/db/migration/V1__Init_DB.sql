@@ -110,3 +110,4 @@ INSERT INTO tovar (id, id_category , name, cost, quantity_in_stock, description)
 VALUES (9, 3, 'Машина Mobicaro 1:16 Мусоровоз инерционная', 649, 100, 'Lorem Ipsum');
 
 
+
