@@ -93,7 +93,7 @@ public class TovarController {
     @ApiOperation(
             value = "Получение картинки товара по id"
     )
-    @RequestMapping(value = "/get/img/{id}", method = RequestMethod.GET)
+    @GetMapping("/get/img/{id}")
     public ResponseEntity<?> getTovarImg(@PathVariable Long id){
         return tovarService.downloadImg(id);
     }

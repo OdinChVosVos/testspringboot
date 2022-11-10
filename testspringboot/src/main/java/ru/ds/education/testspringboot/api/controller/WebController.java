@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import ru.ds.education.testspringboot.core.mapper.UsersMapper;
 import ru.ds.education.testspringboot.core.model.UsersDto;
+import ru.ds.education.testspringboot.core.service.TovarService;
 import ru.ds.education.testspringboot.core.service.UsersService;
 import ru.ds.education.testspringboot.db.entity.Users;
 
@@ -18,6 +19,9 @@ public class WebController {
 
     @Autowired
     private UsersService usersService;
+
+    @Autowired
+    private TovarService tovarService;
 
     @Autowired
     private UsersMapper usersMapper;
@@ -31,6 +35,7 @@ public class WebController {
     public String admin(Model model){
         model.addAttribute("users", usersService.getAll());
         model.addAttribute("user", new UsersDto());
+        model.addAttribute("tovars", tovarService.getAll());
         return "admin";
     }
 

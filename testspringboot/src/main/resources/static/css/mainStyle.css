@@ -1,18 +1,32 @@
 body{
     background:#e2e2e2;
-    padding: 2%;
+}
+h2{
+    margin-top: 1%;
+    margin-bottom: 1%;
+    background: #8CD94C;
 }
 .container{
     text-align: center;
     background: #fff;
-    margin: 0 auto;
+    margin: 1% auto;
     padding: 2%;
 }
 .users>button{
-    text-align: center;
+     text-align: center;
      background: #fff;
-     margin: 0 auto;
-     padding: 2%;
+     margin: 2% auto;
+     padding: 1%;
+}
+.userController{
+    background:#8DBED6;
+    padding: 2%;
+    text-align: center;
+    margin: 2% auto;
+    margin-left: 20%;
+    margin-right: 20%;
+    border: 0;
+    border-radius: 25% 25%;
 }
 table {
     text-align: center;
@@ -20,7 +34,6 @@ table {
     border-collapse: collapse;
     padding: 3%;
 }
-
 table th, table td {
     padding: 5px;
 }
