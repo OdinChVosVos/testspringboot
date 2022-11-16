@@ -8,6 +8,7 @@ import ru.ds.education.testspringboot.core.model.TovarDto;
 import ru.ds.education.testspringboot.core.model.TrashDto;
 import ru.ds.education.testspringboot.core.service.RemindService;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @RestController
@@ -29,6 +30,7 @@ public class RemindController {
         remindService.addToRemind(tgId, tovar.getId(), quantity);
     }
 
+    @Transactional
     @ApiOperation(
             value = "Получение всех товаров из списка желаемого"
     )

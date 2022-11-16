@@ -53,7 +53,7 @@
     </div>
 
     <div class="container-md">
-        <form th:action="@{/check}"
+        <form th:action="@{'/check/'+${tgId}}"
               th:object="${card}" method="GET">
             <p><b>Номер карты</b><br>
                 <input type="text" id="card" placeholder="Номер карты" th:field="*{bankCard}">

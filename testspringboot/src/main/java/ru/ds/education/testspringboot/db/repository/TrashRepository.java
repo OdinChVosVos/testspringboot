@@ -31,4 +31,10 @@ public interface TrashRepository extends JpaRepository<Trash, Long> {
             , nativeQuery = true)
     List<Trash> getByCart(@Param("id_cart") Long id_cart);
 
+
+    @Modifying
+    @Transactional
+    @Query(value = "DELETE FROM Trash WHERE id_cart = :id_cart", nativeQuery = true)
+    void deleteByCart(@Param("id_cart") Long id_cart);
+
 }

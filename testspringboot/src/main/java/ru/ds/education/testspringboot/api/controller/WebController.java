@@ -57,13 +57,15 @@ public class WebController {
         model.addAttribute("user", usersService.getByTgId(tgId));
         model.addAttribute("price", cartsService.countPrice(tgId));
         model.addAttribute("card", new Card());
+        model.addAttribute("tgId", tgId);
         return "buy";
     }
 
-    @RequestMapping(value = { "/check" }, method = RequestMethod.GET)
-    public String check(@ModelAttribute("card") Card card) {
+    @RequestMapping(value = { "/check/{tgId}" }, method = RequestMethod.GET)
+    public String check(@ModelAttribute("card") Card card, @PathVariable Long tgId) {
         if (CardAuth.check(card)){
             System.out.println(true);
+            cartsService.clearCart(tgId);
 
             return "redirect:/";
         }
