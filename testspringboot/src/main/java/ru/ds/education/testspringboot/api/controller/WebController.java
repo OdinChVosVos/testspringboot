@@ -3,16 +3,18 @@ package ru.ds.education.testspringboot.api.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
-import org.springframework.web.bind.annotation.RequestMethod;
+import ru.ds.education.testspringboot.api.job.CardAuth;
 import ru.ds.education.testspringboot.core.mapper.UsersMapper;
+import ru.ds.education.testspringboot.core.model.Card;
 import ru.ds.education.testspringboot.core.model.UsersDto;
+import ru.ds.education.testspringboot.core.service.CartsService;
 import ru.ds.education.testspringboot.core.service.TovarService;
 import ru.ds.education.testspringboot.core.service.UsersService;
 import ru.ds.education.testspringboot.db.entity.Users;
+
+import javax.transaction.Transactional;
 
 @Controller
 public class WebController {
@@ -22,6 +24,9 @@ public class WebController {
 
     @Autowired
     private TovarService tovarService;
+
+    @Autowired
+    private CartsService cartsService;
 
     @Autowired
     private UsersMapper usersMapper;
@@ -40,8 +45,29 @@ public class WebController {
     }
 
     @RequestMapping(value = { "/addUser" }, method = RequestMethod.POST)
-    public String addUser(Model model, @ModelAttribute("user") UsersDto user) {
+    public String addUser(@ModelAttribute("user") UsersDto user) {
         usersService.signUp(user);
+        return "redirect:/admin";
+    }
+
+    @Transactional
+    @RequestMapping("/buy/{tgId}")
+    public String buy(Model model, @PathVariable Long tgId){
+        model.addAttribute("goods", cartsService.getAll(tgId));
+        model.addAttribute("user", usersService.getByTgId(tgId));
+        model.addAttribute("price", cartsService.countPrice(tgId));
+        model.addAttribute("card", new Card());
+        return "buy";
+    }
+
+    @RequestMapping(value = { "/check" }, method = RequestMethod.GET)
+    public String check(@ModelAttribute("card") Card card) {
+        if (CardAuth.check(card)){
+            System.out.println(true);
+
+            return "redirect:/";
+        }
+        System.out.println(false);
         return "redirect:/admin";
     }
 }

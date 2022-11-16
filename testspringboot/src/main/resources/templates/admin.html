@@ -14,8 +14,10 @@
     <script th:src="@{/js/adminJs.js}"></script>
 </head>
 <body>
-    <div class = "container">
-        <h1>ADMIN CONTROL PAGE</h1>
+    <div class = "container-md">
+        <center>
+            <h1>ADMIN CONTROL PAGE</h1>
+        </center>
     </div>
 
     <div class = "users">
@@ -77,6 +79,7 @@
             <thead>
                 <tr>
                     <th scope="col">#</th>
+                    <th scope="col">id</th>
                     <th scope="col">name</th>
                     <th scope="col">cost</th>
                     <th scope="col">category</th>
@@ -86,8 +89,9 @@
                 </tr>
             </thead>
             <tbody>
-                <tr th:each= "tovar: ${tovars}">
-                    <th scope = "row" th:utext = "${tovar.id}">Empty</th>
+                <tr th:each= "tovar, tovarStat: ${tovars}">
+                    <th scope = "row" th:utext = "${tovarStat.count}">Empty</th>
+                    <td th:utext = "${tovar.id}">Empty</td>
                     <td th:utext = "${tovar.name}">Empty</td>
                     <td th:utext = "${tovar.cost}">Empty</td>
                     <td th:utext = "${tovar.category.name}">Empty</td>

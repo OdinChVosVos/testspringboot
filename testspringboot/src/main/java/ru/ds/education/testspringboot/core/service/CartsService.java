@@ -12,10 +12,7 @@ import ru.ds.education.testspringboot.core.model.CartsDto;
 import ru.ds.education.testspringboot.core.model.TovarDto;
 import ru.ds.education.testspringboot.core.model.TrashDto;
 import ru.ds.education.testspringboot.db.entity.*;
-import ru.ds.education.testspringboot.db.repository.BookedRepository;
-import ru.ds.education.testspringboot.db.repository.CartsRepository;
-import ru.ds.education.testspringboot.db.repository.TovarRepository;
-import ru.ds.education.testspringboot.db.repository.UsersRepository;
+import ru.ds.education.testspringboot.db.repository.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +43,9 @@ public class CartsService {
     private TrashService trashService;
 
     @Autowired
+    private TrashRepository trashRepository;
+
+    @Autowired
     private TrashMapper trashMapper;
 
     public List<TrashDto> getAll(Long tgId){
@@ -63,6 +63,18 @@ public class CartsService {
             cartsRepository.add(idUser);
         Long cartId = cartsRepository.getLastId(idUser);
         trashService.addToCart(tovar, cartId);
+    }
+
+    public int countPrice(Long tgId){
+        List<TrashDto> goods = getAll(tgId);
+        int price = 0;
+        for (TrashDto good:goods)
+            price += good.getQuantity() * good.getTovar().getCost();
+        return price;
+    }
+
+    public void clearCart(Long tgId){
+//        trashRepository.deleteById(1);
     }
 
     public void buy(Long tgId){
