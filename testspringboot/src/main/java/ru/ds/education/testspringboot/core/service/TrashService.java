@@ -20,11 +20,15 @@ public class TrashService {
     private TrashRepository trashRepository;
 
     @Autowired
+    private TovarService tovarService;
+
+    @Autowired
     private TrashMapper trashMapper;
 
     public void addToCart(TrashDto tovar, Long cartId){
-        System.out.println("trash");
-        trashRepository.add(tovar.getTovar().getId(), tovar.getQuantity(), cartId);
+        if (tovarService.getTovar(tovar.getTovar().getId()).getQuantity_in_stock() >= tovar.getQuantity())
+            trashRepository.add(tovar.getTovar().getId(), tovar.getQuantity(), cartId);
+        else throw new RuntimeException();
     }
 
     public List<Trash> getByCart(Long cartId){
