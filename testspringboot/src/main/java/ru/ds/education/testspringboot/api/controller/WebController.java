@@ -65,11 +65,12 @@ public class WebController {
     public String check(@ModelAttribute("card") Card card, @PathVariable Long tgId) {
         if (CardAuth.check(card)){
             System.out.println(true);
-            cartsService.clearCart(tgId);
+//            tovarService.putGoods();
+//            cartsService.clearCart(tgId);
 
             return "redirect:/";
         }
         System.out.println(false);
-        return "redirect:/admin";
+        return "redirect:/buy/"+tgId;
     }
 }

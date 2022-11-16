@@ -71,7 +71,7 @@ public class TovarController {
         return parseTask.parseProducts("mashiny");
     }
 
-
+    @Transactional
     @ApiOperation(
             value = "Получение всех товаров"
     )
@@ -80,7 +80,7 @@ public class TovarController {
         return tovarService.getAll();
     }
 
-
+    @Transactional
     @ApiOperation(
             value = "Получение товара по id"
     )

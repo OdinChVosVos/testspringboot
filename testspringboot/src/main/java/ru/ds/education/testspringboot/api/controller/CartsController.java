@@ -10,6 +10,7 @@ import ru.ds.education.testspringboot.core.model.TrashDto;
 import ru.ds.education.testspringboot.core.service.CartsService;
 import ru.ds.education.testspringboot.db.entity.Tovar;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class CartsController {
     @Autowired
     private CartsService cartsService;
 
-
+    @Transactional
     @ApiOperation(
             value = "Получение всех товаров из корзины"
     )
