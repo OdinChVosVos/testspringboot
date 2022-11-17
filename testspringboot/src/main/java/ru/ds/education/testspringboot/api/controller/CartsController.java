@@ -42,6 +42,14 @@ public class CartsController {
 
 
     @ApiOperation(
+            value = "Удаление товара из корзины"
+    )
+    @RequestMapping(value = "/remove/{tgId}", method = RequestMethod.DELETE)
+    public void removeFromCart(@PathVariable Long tgId, @RequestParam Long tovarId){
+        cartsService.removeFromCart(tgId, tovarId);
+    }
+
+    @ApiOperation(
             value = "Покупка"
     )
     @RequestMapping(value = "/buy/{tgId}", method = RequestMethod.GET)

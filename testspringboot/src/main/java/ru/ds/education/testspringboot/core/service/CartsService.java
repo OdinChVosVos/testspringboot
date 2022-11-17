@@ -79,6 +79,11 @@ public class CartsService {
         cartsRepository.deleteById(cartId);
     }
 
+    public void removeFromCart(Long tgId, Long tovarId){
+        Long cartId = cartsRepository.getLastId(usersRepository.getByTgID(tgId).getId());
+        trashRepository.deleteFromCart(cartId, tovarId);
+    }
+
     public void buy(Long tgId){
         Long idUser = usersRepository.getByTgID(tgId).getId();
 
