@@ -11,7 +11,6 @@ import ru.ds.education.testspringboot.core.service.CartsService;
 import ru.ds.education.testspringboot.db.entity.Tovar;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
 import java.util.List;
 
 

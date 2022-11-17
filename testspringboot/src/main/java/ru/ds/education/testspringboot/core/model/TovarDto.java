@@ -24,7 +24,7 @@ public class TovarDto {
     private double cost;
 
     @ApiModelProperty("Количество товара")
-    private double quantity_in_stock;
+    private int quantity_in_stock;
 
     @ApiModelProperty("Описание товара")
     private String description;

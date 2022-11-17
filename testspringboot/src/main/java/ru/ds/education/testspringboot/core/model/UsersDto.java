@@ -16,6 +16,9 @@ public class UsersDto {
     @ApiModelProperty("telegram id пользователя")
     private Long id_telegram;
 
+    @ApiModelProperty("chat id пользователя")
+    private Long id_chat;
+
     @ApiModelProperty("Логин пользователя")
     private String name;
 

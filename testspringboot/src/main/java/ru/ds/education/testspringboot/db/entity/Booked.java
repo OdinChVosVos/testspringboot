@@ -22,9 +22,9 @@ public class Booked {
     @JoinColumn(name = "id_tovar")
     private Tovar tovar;
 
-    private double bookedQuantity;
+    private int bookedQuantity;
 
-    public Booked(Tovar tovar, double bookedQuantity) {
+    public Booked(Tovar tovar, int bookedQuantity) {
         this.tovar = tovar;
         this.bookedQuantity = bookedQuantity;
     }

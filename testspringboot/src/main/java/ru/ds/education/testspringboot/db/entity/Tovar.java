@@ -25,7 +25,7 @@ public class Tovar {
 
     private String name;
     private double cost;
-    private double quantity_in_stock;
+    private int quantity_in_stock;
     private String description;
 
     @Lob
@@ -33,7 +33,7 @@ public class Tovar {
     private byte[] photo;
 
 
-    public Tovar(Category category, String name, double cost, double quantity_in_stock, String description, byte[] photo) {
+    public Tovar(Category category, String name, double cost, int quantity_in_stock, String description, byte[] photo) {
         this.category = category;
         this.name = name;
         this.cost = cost;
@@ -42,7 +42,7 @@ public class Tovar {
         this.photo = photo;
     }
 
-    public Tovar(Long id, Category category, String name, double cost, double quantity_in_stock, String description, byte[] photo) {
+    public Tovar(Long id, Category category, String name, double cost, int quantity_in_stock, String description, byte[] photo) {
         this.id = id;
         this.category = category;
         this.name = name;

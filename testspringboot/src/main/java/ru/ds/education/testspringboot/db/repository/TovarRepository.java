@@ -39,7 +39,7 @@ public interface TovarRepository extends JpaRepository<Tovar, Long> {
             @Param("id_category") Long id_category,
             @Param("name") String name,
             @Param("cost") double cost,
-            @Param("quantity_in_stock") double quantity_in_stock,
+            @Param("quantity_in_stock") int quantity_in_stock,
             @Param("description") String description,
             @Param("photo") String photo
     );

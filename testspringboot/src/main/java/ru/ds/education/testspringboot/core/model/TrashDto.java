@@ -17,7 +17,7 @@ public class TrashDto {
     private TovarDto tovar;
 
     @ApiModelProperty("Количество товара")
-    private double quantity;
+    private int quantity;
 
     @ApiModelProperty("Корзина")
     private CartsDto cart;

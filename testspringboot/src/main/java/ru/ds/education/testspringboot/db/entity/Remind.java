@@ -27,7 +27,7 @@ public class Remind {
     private Tovar tovar;
 
     private boolean is_delivered;
-    private double quantity;
+    private int quantity;
 
     public Remind(Users user, Tovar tovar, boolean is_delivered, int quantity) {
         this.user = user;

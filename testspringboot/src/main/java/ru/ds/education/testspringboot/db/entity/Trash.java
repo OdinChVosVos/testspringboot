@@ -22,14 +22,14 @@ public class Trash {
     @JoinColumn(name = "id_tovar")
     private Tovar tovar;
 
-    private double quantity;
+    private int quantity;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "id_cart")
     private Carts cart;
 
 
-    public Trash(Tovar tovar, double quantity, Carts cart) {
+    public Trash(Tovar tovar, int quantity, Carts cart) {
         this.tovar = tovar;
         this.quantity = quantity;
         this.cart = cart;

@@ -19,7 +19,7 @@ public interface BookedRepository extends JpaRepository<Booked, Long> {
             nativeQuery = true)
     void putInBooked(
             @Param("id_tovar") Long id_tovar,
-            @Param("booked_quantity") double booked_quantity
+            @Param("booked_quantity") int booked_quantity
     );
 
 }
