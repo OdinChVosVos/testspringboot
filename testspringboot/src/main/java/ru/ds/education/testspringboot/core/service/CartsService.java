@@ -62,6 +62,8 @@ public class CartsService {
         if (cartsRepository.getLastId(idUser) == null)
             cartsRepository.add(idUser);
         Long cartId = cartsRepository.getLastId(idUser);
+        if (trashRepository.getTovar(tovar.getId()) != null)
+            throw new RuntimeException();
         trashService.addToCart(tovar, cartId);
     }
 

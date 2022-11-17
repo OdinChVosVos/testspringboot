@@ -31,6 +31,9 @@ public interface TrashRepository extends JpaRepository<Trash, Long> {
             , nativeQuery = true)
     List<Trash> getByCart(@Param("id_cart") Long id_cart);
 
+    @Query(value = "Select * from Trash where id_tovar = :id_tovar LIMIT 1"
+            , nativeQuery = true)
+    Trash getTovar(@Param("id_tovar") Long id_tovar);
 
     @Modifying
     @Transactional
@@ -45,5 +48,7 @@ public interface TrashRepository extends JpaRepository<Trash, Long> {
             @Param("id_cart") Long id_cart,
             @Param("id_tovar") Long id_tovar
     );
+
+
 
 }
