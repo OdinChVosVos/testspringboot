@@ -24,6 +24,10 @@ public class Booked {
 
     private int bookedQuantity;
 
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_user")
+    private Users user;
+
     public Booked(Tovar tovar, int bookedQuantity) {
         this.tovar = tovar;
         this.bookedQuantity = bookedQuantity;

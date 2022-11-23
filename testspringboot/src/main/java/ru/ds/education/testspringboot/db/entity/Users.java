@@ -17,7 +17,6 @@ public class Users {
     private Long id;
 
     private Long id_telegram;
-    private Long id_chat;
     private String name;
     private String firstname;
     private String lastname;
@@ -25,9 +24,8 @@ public class Users {
     private String mail;
     private boolean agreement;
 
-    public Users(Long id_telegram, Long id_chat, String name, String firstname, String lastname, String phone, String mail, boolean agreement) {
+    public Users(Long id_telegram, String name, String firstname, String lastname, String phone, String mail, boolean agreement) {
         this.id_telegram = id_telegram;
-        this.id_chat = id_chat;
         this.name = name;
         this.firstname = firstname;
         this.lastname = lastname;

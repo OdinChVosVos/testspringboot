@@ -47,20 +47,11 @@ public interface TovarRepository extends JpaRepository<Tovar, Long> {
 
     @Modifying
     @Transactional
-    @Query(value = "UPDATE Tovar SET quantity_in_stock = :quantity WHERE id = :id;", nativeQuery = true)
+    @Query(value = "UPDATE Tovar SET quantity_in_stock = :quantity WHERE id = :id", nativeQuery = true)
     void takeFromTovar(
-            @Param("quantity") double quantity,
+            @Param("quantity") int quantity,
             @Param("id") Long id
     );
-
-
-//    @Modifying
-//    @Transactional
-//    @Query(value = "UPDATE Tovar SET photo = :photo WHERE id = :id", nativeQuery = true)
-//    void updateImg(
-//            @Param("photo") byte[] photo,
-//            @Param("id") Long id
-//    );
 
 
 }

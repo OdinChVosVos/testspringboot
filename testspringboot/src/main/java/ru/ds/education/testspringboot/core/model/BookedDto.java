@@ -17,5 +17,8 @@ public class BookedDto {
     private TovarDto tovar;
 
     @ApiModelProperty("Количество")
-    private double bookedQuantity;
+    private int bookedQuantity;
+
+    @ApiModelProperty("Пользователь")
+    private UsersDto user;
 }

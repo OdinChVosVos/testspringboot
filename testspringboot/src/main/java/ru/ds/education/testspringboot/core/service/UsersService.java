@@ -46,8 +46,8 @@ public class UsersService {
         return usersMapper.mapAsList(usersRepository.findAll(), UsersDto.class);
     }
 
-    public UsersDto getByTgId(Long id){
-        return usersMapper.map(usersRepository.getByTgID(id), UsersDto.class);
+    public UsersDto getByTgId(Long tgId){
+        return usersMapper.map(usersRepository.getByTgID(tgId), UsersDto.class);
     }
 
 }

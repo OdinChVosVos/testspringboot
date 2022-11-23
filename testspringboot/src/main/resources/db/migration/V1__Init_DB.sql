@@ -13,6 +13,7 @@ CREATE TABLE public.booked (
 	id serial NOT NULL,
 	id_tovar integer NOT NULL,
 	booked_quantity integer NOT NULL,
+	id_user integer NOT NULL,
 	CONSTRAINT booked_pk PRIMARY KEY (id)
 );
 
@@ -29,7 +30,6 @@ CREATE TABLE public.category (
 CREATE TABLE public.users (
 	id serial NOT NULL,
 	id_telegram bigint NOT NULL UNIQUE,
-	id_chat bigint NOT NULL UNIQUE,
 	name varchar(100) NULL,
 	firstname varchar(100) NOT NULL,
 	lastname varchar(100) NULL,
@@ -82,8 +82,9 @@ ALTER TABLE trash ADD CONSTRAINT trash_fk1 FOREIGN KEY (id_tovar) REFERENCES tov
 ALTER TABLE remind ADD CONSTRAINT remind_fk0 FOREIGN KEY (id_user) REFERENCES users(id);
 ALTER TABLE remind ADD CONSTRAINT remind_fk1 FOREIGN KEY (id_tovar) REFERENCES tovar(id);
 ALTER TABLE booked ADD CONSTRAINT booked_fk0 FOREIGN KEY (id_tovar) REFERENCES tovar(id);
+ALTER TABLE booked ADD CONSTRAINT booked_fk1 FOREIGN KEY (id_user) REFERENCES users(id);
 
-INSERT INTO users (id, id_telegram, id_chat, name, firstname, agreement) VALUES (0, 0, 0, 'Admin', 'Admin', false);
+INSERT INTO users (id, id_telegram, name, firstname, agreement) VALUES (0, 0, 'Admin', 'Admin', false);
 
 INSERT INTO category (id, name, description) VALUES (1, 'Lego', 'Lorem Ipsum');
 INSERT INTO category (id, name, description) VALUES (2, 'Barbie', 'Lorem Ipsum');

@@ -53,7 +53,8 @@ public class WebController {
     @Transactional
     @RequestMapping("/buy/{tgId}")
     public String buy(Model model, @PathVariable Long tgId){
-        model.addAttribute("goods", cartsService.getAll(tgId));
+        model.addAttribute("goods", cartsService.buy(tgId));
+//        model.addAttribute("goods", cartsService.getAll(tgId));
         model.addAttribute("user", usersService.getByTgId(tgId));
         model.addAttribute("price", cartsService.countPrice(tgId));
         model.addAttribute("card", new Card());
@@ -73,4 +74,6 @@ public class WebController {
         System.out.println(false);
         return "redirect:/buy/"+tgId;
     }
+
+
 }

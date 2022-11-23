@@ -37,12 +37,12 @@
             <tr th:each= "good, goodStat: ${goods}">
                 <th scope = "row" th:utext = "${goodStat.count}">Empty</th>
                 <td th:utext = "${good.tovar.name}">Empty</td>
-                <td th:utext = "${good.quantity}">Empty</td>
+                <td th:utext = "${good.bookedQuantity}">Empty</td>
                 <td> <img th:src= "@{${good.tovar.photo}==null? null:'/api/tovar/get/img/'+${good.tovar.id}}"
                           height = "100px" data-lightbox="tovar">
                 </td>
                 <td th:utext = "${good.tovar.cost}">Empty</td>
-                <td th:utext = "@{${good.quantity} * ${good.tovar.cost}} + ' руб.'">Empty</td>
+                <td th:utext = "@{${good.bookedQuantity} * ${good.tovar.cost}} + ' руб.'">Empty</td>
             </tr>
             <tr>
                 <th scope = "row" colspan="5"><b>ИТОГО:</b></th>

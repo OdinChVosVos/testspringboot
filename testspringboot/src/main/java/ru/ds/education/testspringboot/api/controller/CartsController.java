@@ -21,6 +21,9 @@ public class CartsController {
     @Autowired
     private CartsService cartsService;
 
+    @Autowired
+    private WebController webController;
+
     @Transactional
     @ApiOperation(
             value = "Получение всех товаров из корзины"
@@ -46,14 +49,6 @@ public class CartsController {
     @RequestMapping(value = "/remove/{tgId}", method = RequestMethod.DELETE)
     public void removeFromCart(@PathVariable Long tgId, @RequestParam Long tovarId){
         cartsService.removeFromCart(tgId, tovarId);
-    }
-
-    @ApiOperation(
-            value = "Покупка"
-    )
-    @RequestMapping(value = "/buy/{tgId}", method = RequestMethod.GET)
-    public void buy(@PathVariable Long tgId){
-        cartsService.buy(tgId);
     }
 
 }

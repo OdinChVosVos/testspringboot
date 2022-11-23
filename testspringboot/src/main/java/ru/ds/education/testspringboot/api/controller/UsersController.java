@@ -47,8 +47,8 @@ public class UsersController {
     @ApiOperation(
             value = "Получение пользователя по ТГ id"
     )
-    @RequestMapping(value = "/get/tg/{id}", method = RequestMethod.GET)
-    public UsersDto getByTgId(@PathVariable Long id){
-        return usersService.getByTgId(id);
+    @RequestMapping(value = "/get/tg/{tgId}", method = RequestMethod.GET)
+    public UsersDto getByTgId(@PathVariable Long tgId){
+        return usersService.getByTgId(tgId);
     }
 }

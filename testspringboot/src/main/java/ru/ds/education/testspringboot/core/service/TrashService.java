@@ -2,6 +2,7 @@ package ru.ds.education.testspringboot.core.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.ds.education.testspringboot.api.exceptions.TooMuchException;
 import ru.ds.education.testspringboot.core.mapper.TrashMapper;
 import ru.ds.education.testspringboot.core.model.CartsDto;
 import ru.ds.education.testspringboot.core.model.TovarDto;
@@ -28,7 +29,7 @@ public class TrashService {
     public void addToCart(TrashDto tovar, Long cartId){
         if (tovarService.getTovar(tovar.getTovar().getId()).getQuantity_in_stock() >= tovar.getQuantity())
             trashRepository.add(tovar.getTovar().getId(), tovar.getQuantity(), cartId);
-        else throw new RuntimeException();
+        else throw new TooMuchException();
     }
 
     public List<Trash> getByCart(Long cartId){
